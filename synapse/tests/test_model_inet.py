@@ -749,7 +749,7 @@ class InetModelTest(SynTest):
             postref_tufo = core.formTufoByProp('inet:web:postref', (('vertex.link/user', 'mypost 0.0.0.0'), ('inet:ipv4', 0)))
             self.nn(core.getTufoByProp('inet:web:post', ('vertex.link/user', 'mypost 0.0.0.0')))
 
-            self.eq(postref_tufo[1]['tufo:form'], 'inet:web:postref')
+            self.eq(postref_tufo[1]['node:form'], 'inet:web:postref')
             self.eq(postref_tufo[1]['inet:web:postref'], '804ec63392f4ea031bb3fd004dee209d')
             self.eq(postref_tufo[1]['inet:web:postref:post'], '68bc4607f0518963165536921d6e86fa')
             self.eq(postref_tufo[1]['inet:web:postref:xref'], 'inet:ipv4=0.0.0.0')
@@ -775,9 +775,9 @@ class InetModelTest(SynTest):
         iden1 = guid()
         tick = now()
         rows = (
-            (iden0, 'tufo:form', 'inet:url', tick),
+            (iden0, 'node:form', 'inet:url', tick),
             (iden0, 'inet:url', 'http://www.woot.com/', tick),
-            (iden1, 'tufo:form', 'inet:url', tick),
+            (iden1, 'node:form', 'inet:url', tick),
             (iden1, 'inet:url', 'http://1.2.3.4/', tick),
         )
 
@@ -808,9 +808,9 @@ class InetModelTest(SynTest):
         iden1 = guid()
         tick = now()
         rows = [
-            (iden0, 'tufo:form', 'inet:tcp4', tick),
+            (iden0, 'node:form', 'inet:tcp4', tick),
             (iden0, 'inet:tcp4', '1.2.3.4:80', tick),
-            (iden1, 'tufo:form', 'inet:udp4', tick),
+            (iden1, 'node:form', 'inet:udp4', tick),
             (iden1, 'inet:udp4', '1.2.3.4:443', tick),
         ]
 
@@ -839,7 +839,7 @@ class InetModelTest(SynTest):
         iden0 = guid()
         tick = now()
         rows = [
-            (iden0, 'tufo:form', 'inet:whois:rec', tick),
+            (iden0, 'node:form', 'inet:whois:rec', tick),
             (iden0, 'inet:whois:rec', 'vertex.link@2017/09/18 15:01:00.000', tick),  # 1505746860000,
             (iden0, 'inet:whois:rec:fqdn', 'vertex.link', tick),
             (iden0, 'inet:whois:rec:asof', 1505746860000, tick),
@@ -896,7 +896,7 @@ class InetModelTest(SynTest):
             return [
                 (iden, 'syn:tagform:title', '??', tick),
                 (iden, 'syn:tagform', form_valu, tick),
-                (iden, 'tufo:form', 'syn:tagform', tick),
+                (iden, 'node:form', 'syn:tagform', tick),
                 (iden, 'syn:tagform:tag', tag, tick),
                 (iden, 'syn:tagform:form', form, tick),
                 (iden, 'syn:tagform:doc', '??', tick),
@@ -908,7 +908,7 @@ class InetModelTest(SynTest):
             dark_iden = iden[::-1]
             tick = now()
             adds.extend([
-                (iden, 'tufo:form', 'inet:netuser', tick),
+                (iden, 'node:form', 'inet:netuser', tick),
                 (iden, 'inet:netuser', 'vertex.link/' + user, tick),
                 (iden, 'inet:netuser:site', 'vertex.link', tick),
                 (iden, 'inet:netuser:user', user, tick),
@@ -941,7 +941,7 @@ class InetModelTest(SynTest):
             dark_iden = iden[::-1]
             tick = now()
             adds.extend([
-                (iden, 'tufo:form', 'inet:netgroup', tick),
+                (iden, 'node:form', 'inet:netgroup', tick),
                 (iden, 'inet:netgroup', 'vertex.link/' + group, tick),
                 (iden, 'inet:netgroup:site', 'vertex.link', tick),
                 (iden, 'inet:netgroup:name', group, tick),
@@ -964,7 +964,7 @@ class InetModelTest(SynTest):
         dark_iden = iden[::-1]
         tick = now()
         adds.extend([
-            (iden, 'tufo:form', 'inet:follows', tick),
+            (iden, 'node:form', 'inet:follows', tick),
             (iden, 'inet:follows', follow_valu, tick),
             (iden, 'inet:follows:follower', acct1, tick),
             (iden, 'inet:follows:followee', acct2, tick),
@@ -982,7 +982,7 @@ class InetModelTest(SynTest):
         dark_iden = iden[::-1]
         tick = now()
         adds.extend([
-            (iden, 'tufo:form', 'inet:netmemb', tick),
+            (iden, 'node:form', 'inet:netmemb', tick),
             (iden, 'inet:netmemb', webmemb_valu, tick),
             (iden, 'inet:netmemb:user', 'vertex.link/person1', tick),
             (iden, 'inet:netmemb:group', 'vertex.link/group0', tick),
@@ -1006,7 +1006,7 @@ class InetModelTest(SynTest):
         dark_iden = iden[::-1]
         tick = now()
         adds.extend([
-            (iden, 'tufo:form', 'inet:netpost', tick),
+            (iden, 'node:form', 'inet:netpost', tick),
             (iden, 'inet:netpost', webpost_valu, tick),
             (iden, 'inet:netpost:netuser', 'vertex.link/person1', tick),
             (iden, 'inet:netpost:netuser:site', 'vertex.link', tick),
@@ -1029,7 +1029,7 @@ class InetModelTest(SynTest):
         dark_iden = iden[::-1]
         tick = now()
         adds.extend([
-            (iden, 'tufo:form', 'inet:netfile', tick),
+            (iden, 'node:form', 'inet:netfile', tick),
             (iden, 'inet:netfile', webfile_valu, tick),
             (iden, 'inet:netfile:file', '0' * 32, tick),
             (iden, 'inet:netfile:netuser', 'vertex.link/person1', tick),
@@ -1054,7 +1054,7 @@ class InetModelTest(SynTest):
         dark_iden = iden[::-1]
         tick = now()
         adds.extend([
-            (iden, 'tufo:form', 'file:imgof', tick),
+            (iden, 'node:form', 'file:imgof', tick),
             (iden, 'file:imgof', imgof_valu, tick),
             (iden, 'file:imgof:file', '0' * 32, tick),
             (iden, 'file:imgof:xref', 'inet:netuser=vertex.link/person1', tick),
@@ -1073,7 +1073,7 @@ class InetModelTest(SynTest):
         dark_iden = iden[::-1]
         tick = now()
         adds.extend([
-            (iden, 'tufo:form', 'file:txtref', tick),
+            (iden, 'node:form', 'file:txtref', tick),
             (iden, 'file:txtref', txtref_valu, tick),
             (iden, 'file:txtref:file', '0' * 32, tick),
             (iden, 'file:txtref:xref', 'inet:netgroup=vertex.link/group0', tick),
@@ -1093,7 +1093,7 @@ class InetModelTest(SynTest):
         adds.extend([
             (iden, 'ps:hasnetuser:netuser', 'vertex.link/heheman', tick),
             (iden, 'ps:hasnetuser:person', '00000000000000000000000000000000', tick),
-            (iden, 'tufo:form', 'ps:hasnetuser', tick),
+            (iden, 'node:form', 'ps:hasnetuser', tick),
             (iden, 'ps:hasnetuser', '00000000000000000000000000000000/vertex.link/heheman', tick),
             (iden, '#hehe.hoho', tick, tick),
             (iden, '#hehe', tick, tick),
@@ -1109,7 +1109,7 @@ class InetModelTest(SynTest):
         adds.extend([
             (iden, 'ou:hasnetuser:netuser', 'vertex.link/heheman', tick),
             (iden, 'ou:hasnetuser:org', '00000000000000000000000000000000', tick),
-            (iden, 'tufo:form', 'ou:hasnetuser', tick),
+            (iden, 'node:form', 'ou:hasnetuser', tick),
             (iden, 'ou:hasnetuser', '4016087db1b71ecc56db535a5ee9e86e', tick),
             (iden, '#hehe.hoho', tick, tick),
             (iden, '#hehe', tick, tick),
@@ -1129,7 +1129,7 @@ class InetModelTest(SynTest):
             (iden, 'inet:web:logon:netuser:user', 'pennywise', tick),
             (iden, 'inet:web:logon:ipv4', 16909060, tick),
             (iden, 'inet:web:logon:time', 1505001600000, tick),
-            (iden, 'tufo:form', 'inet:web:logon', tick),
+            (iden, 'node:form', 'inet:web:logon', tick),
             (iden, '#hehe.hoho', tick, tick),
             (iden, '#hehe', tick, tick),
             (dark_iden, '_:*inet:web:logon#hehe.hoho', tick, tick),
@@ -1156,7 +1156,7 @@ class InetModelTest(SynTest):
 
                 # check that properties were correctly migrated and tags were not damaged
                 tufo = core.getTufoByProp('inet:web:acct', 'vertex.link/pennywise0')
-                self.eq(tufo[1]['tufo:form'], 'inet:web:acct')
+                self.eq(tufo[1]['node:form'], 'inet:web:acct')
                 self.eq(tufo[1]['inet:web:acct'], 'vertex.link/pennywise0')
                 self.eq(tufo[1]['inet:web:acct:user'], 'pennywise0')
                 self.eq(tufo[1]['inet:web:acct:site'], 'vertex.link')
@@ -1197,7 +1197,7 @@ class InetModelTest(SynTest):
 
                 # check that properties were correctly migrated and tags were not damaged
                 tufo = core.getTufoByProp('inet:web:group', 'vertex.link/group0')
-                self.eq(tufo[1]['tufo:form'], 'inet:web:group')
+                self.eq(tufo[1]['node:form'], 'inet:web:group')
                 self.eq(tufo[1]['inet:web:group'], 'vertex.link/group0')
                 self.eq(tufo[1]['inet:web:group:site'], 'vertex.link')
                 self.eq(tufo[1]['inet:web:group:name'], 'group0')
@@ -1228,7 +1228,7 @@ class InetModelTest(SynTest):
 
                 # check that properties were correctly migrated and tags were not damaged
                 tufo = core.getTufoByProp('inet:web:memb', webmemb_valu)
-                self.eq(tufo[1]['tufo:form'], 'inet:web:memb')
+                self.eq(tufo[1]['node:form'], 'inet:web:memb')
                 self.eq(tufo[1]['inet:web:memb'], webmemb_valu)
                 self.eq(tufo[1]['inet:web:memb:acct'], 'vertex.link/person1')
                 self.eq(tufo[1]['inet:web:memb:group'], 'vertex.link/group0')
@@ -1260,7 +1260,7 @@ class InetModelTest(SynTest):
 
                 # check that properties were correctly migrated and tags were not damaged
                 tufo = core.getTufoByProp('inet:web:follows', follow_valu)
-                self.eq(tufo[1]['tufo:form'], 'inet:web:follows')
+                self.eq(tufo[1]['node:form'], 'inet:web:follows')
                 self.eq(tufo[1]['inet:web:follows'], follow_valu)
                 self.eq(tufo[1]['inet:web:follows:follower'], acct1)
                 self.eq(tufo[1]['inet:web:follows:followee'], acct2)
@@ -1290,7 +1290,7 @@ class InetModelTest(SynTest):
 
                 # check that properties were correctly migrated and tags were not damaged
                 tufo = core.getTufoByProp('inet:web:post', webpost_valu)
-                self.eq(tufo[1]['tufo:form'], 'inet:web:post')
+                self.eq(tufo[1]['node:form'], 'inet:web:post')
                 self.eq(tufo[1]['inet:web:post'], webpost_valu)
                 self.eq(tufo[1]['inet:web:post:acct'], 'vertex.link/person1')
                 self.eq(tufo[1]['inet:web:post:acct:site'], 'vertex.link')
@@ -1323,7 +1323,7 @@ class InetModelTest(SynTest):
 
                 # check that properties were correctly migrated and tags were not damaged
                 tufo = core.getTufoByProp('inet:web:file', webfile_valu)
-                self.eq(tufo[1]['tufo:form'], 'inet:web:file')
+                self.eq(tufo[1]['node:form'], 'inet:web:file')
                 self.eq(tufo[1]['inet:web:file'], webfile_valu)
                 self.eq(tufo[1]['inet:web:file:acct'], 'vertex.link/person1')
                 self.eq(tufo[1]['inet:web:file:acct:site'], 'vertex.link')
@@ -1359,7 +1359,7 @@ class InetModelTest(SynTest):
                 # check that properties were correctly migrated and tags were not damaged
                 new_imgof_valu = 'fd415d0895e9ce466d8292c3d55c6bf5'  # NOTE: valu changes because we change the prop name
                 tufo = core.getTufoByProp('file:imgof', new_imgof_valu)
-                self.eq(tufo[1]['tufo:form'], 'file:imgof')
+                self.eq(tufo[1]['node:form'], 'file:imgof')
                 self.eq(tufo[1]['file:imgof'], new_imgof_valu)
                 self.eq(tufo[1]['file:imgof:file'], '0' * 32)
                 self.eq(tufo[1]['file:imgof:xref'], 'inet:web:acct=vertex.link/person1')
@@ -1384,7 +1384,7 @@ class InetModelTest(SynTest):
                 # check that properties were correctly migrated and tags were not damaged
                 new_txtref_valu = 'd4f8fbb792d127422a0dc788588f8f7a'  # NOTE: valu changes because we change the prop name
                 tufo = core.getTufoByProp('file:txtref', new_txtref_valu)
-                self.eq(tufo[1]['tufo:form'], 'file:txtref')
+                self.eq(tufo[1]['node:form'], 'file:txtref')
                 self.eq(tufo[1]['file:txtref'], new_txtref_valu)
                 self.eq(tufo[1]['file:txtref:file'], '0' * 32)
                 self.eq(tufo[1]['file:txtref:xref'], 'inet:web:group=vertex.link/group0')
@@ -1408,7 +1408,7 @@ class InetModelTest(SynTest):
 
                 # check that properties were correctly migrated and tags were not damaged
                 tufo = core.getTufoByProp('ps:haswebacct', '00000000000000000000000000000000/vertex.link/heheman')
-                self.eq(tufo[1]['tufo:form'], 'ps:haswebacct')
+                self.eq(tufo[1]['node:form'], 'ps:haswebacct')
                 self.eq(tufo[1]['ps:haswebacct'], '00000000000000000000000000000000/vertex.link/heheman')
                 self.eq(tufo[1]['ps:haswebacct:acct'], 'vertex.link/heheman')
                 self.eq(tufo[1]['ps:haswebacct:person'], '00000000000000000000000000000000')
@@ -1435,7 +1435,7 @@ class InetModelTest(SynTest):
 
                 # check that properties were correctly migrated and tags were not damaged
                 tufo = core.getTufoByProp('ou:haswebacct', '4016087db1b71ecc56db535a5ee9e86e')
-                self.eq(tufo[1]['tufo:form'], 'ou:haswebacct')
+                self.eq(tufo[1]['node:form'], 'ou:haswebacct')
                 self.eq(tufo[1]['ou:haswebacct'], '4016087db1b71ecc56db535a5ee9e86e')
                 self.eq(tufo[1]['ou:haswebacct:acct'], 'vertex.link/heheman')
                 self.eq(tufo[1]['ou:haswebacct:org'], '00000000000000000000000000000000')
@@ -1457,7 +1457,7 @@ class InetModelTest(SynTest):
 
                 # ensure inet:web:logon:netuser was moved over
                 tufo = core.getTufoByProp('inet:web:logon')
-                self.eq(tufo[1].get('tufo:form'), 'inet:web:logon')
+                self.eq(tufo[1].get('node:form'), 'inet:web:logon')
                 self.eq(tufo[1].get('inet:web:logon:acct'), 'vertex.link/pennywise')
                 self.eq(tufo[1].get('inet:web:logon:acct:site'), 'vertex.link')
                 self.eq(tufo[1].get('inet:web:logon:acct:user'), 'pennywise')
@@ -1477,7 +1477,7 @@ class InetModelTest(SynTest):
 
         iden, tick = guid(), now()
         adds.extend([
-            (iden, 'tufo:form', 'inet:web:acct', tick),
+            (iden, 'node:form', 'inet:web:acct', tick),
             (iden, 'inet:web:acct', 'vertex.link/pennywise1', tick),
             (iden, 'inet:web:acct:site', 'vertex.link', tick),
             (iden, 'inet:web:acct:user', 'pennywise', tick),
@@ -1486,7 +1486,7 @@ class InetModelTest(SynTest):
 
         iden, tick = guid(), now()
         adds.extend([
-            (iden, 'tufo:form', 'inet:web:acct', tick),
+            (iden, 'node:form', 'inet:web:acct', tick),
             (iden, 'inet:web:acct', 'vertex.link/pennywise2', tick),
             (iden, 'inet:web:acct:site', 'vertex.link', tick),
             (iden, 'inet:web:acct:user', 'pennywise', tick),
@@ -1503,12 +1503,12 @@ class InetModelTest(SynTest):
             with s_cortex.fromstore(stor) as core:
 
                 tufo = core.getTufoByProp('inet:web:acct', 'vertex.link/pennywise1')
-                self.eq(tufo[1]['tufo:form'], 'inet:web:acct')
+                self.eq(tufo[1]['node:form'], 'inet:web:acct')
                 self.eq(tufo[1]['inet:web:acct'], 'vertex.link/pennywise1')
                 self.eq(tufo[1]['inet:web:acct:occupation'], 'entertainer')
 
                 tufo = core.getTufoByProp('inet:web:acct', 'vertex.link/pennywise2')
-                self.eq(tufo[1]['tufo:form'], 'inet:web:acct')
+                self.eq(tufo[1]['node:form'], 'inet:web:acct')
                 self.eq(tufo[1]['inet:web:acct'], 'vertex.link/pennywise2')
                 self.eq(tufo[1]['inet:web:acct:occupation'], 'entertainer')
 
